@@ -1,6 +1,5 @@
 package net.joastbg.sampleapp.dao;
 
-import net.joastbg.sampleapp.entities.Client;
 import net.joastbg.sampleapp.entities.CompteBancaire;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

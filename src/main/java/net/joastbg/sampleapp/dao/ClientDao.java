@@ -16,14 +16,18 @@ public class ClientDao {
     @Autowired
     SessionFactory sessionFactory;
 
-    public Long persist(Client client){
+    public int persist(Client client){
         Session session = sessionFactory.getCurrentSession();
-        Long returnID = (Long) session.save(client);
-        return returnID;
+        return (int) session.save(client);
     }
 
     public List<Client> findAll(){
         Session session = sessionFactory.getCurrentSession();
-        return  session.createQuery("from Client").list();
+        return  session.createQuery("SELECT * from CLIENT").list();
+    }
+    
+    public void delete(Client client) {
+        Session session= sessionFactory.getCurrentSession();
+        session.delete(client);
     }
 }
