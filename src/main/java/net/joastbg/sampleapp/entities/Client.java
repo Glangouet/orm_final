@@ -21,6 +21,9 @@ import javax.persistence.Table;
 @Table(name="CLIENT")
 public abstract class Client implements Serializable  {
 
+    public Client() {
+    }
+    
     @Column
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -69,7 +72,7 @@ public abstract class Client implements Serializable  {
     public void setContactList(Set<Contact> contactList) {
         this.contactList = contactList;
     }    
-    
+   
 }
 
 

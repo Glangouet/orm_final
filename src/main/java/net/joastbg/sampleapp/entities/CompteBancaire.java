@@ -22,6 +22,9 @@ public class CompteBancaire implements Serializable {
     
     @Column
     private boolean mainAccount;
+
+    public CompteBancaire() {
+    }
     
     public CompteBancaire(
             String i,

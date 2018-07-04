@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import net.joastbg.sampleapp.entities.PersonnePhysique;
 
 @Service
 @Transactional
@@ -24,6 +25,11 @@ public class ClientDao {
     public List<Client> findAll(){
         Session session = sessionFactory.getCurrentSession();
         return  session.createQuery("SELECT * from CLIENT").list();
+    }
+    
+    public List<PersonnePhysique> findAllPersonnePhysique() {
+        Session session = sessionFactory.getCurrentSession();
+        return session.createQuery("FROM PersonnePhysique").list();
     }
     
     public void delete(Client client) {
