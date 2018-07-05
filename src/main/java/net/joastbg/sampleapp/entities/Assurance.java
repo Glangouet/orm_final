@@ -41,6 +41,16 @@ public abstract class Assurance implements Serializable, AssuranceInterface {
     @Column
     private String typeAssurance;
     
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "ASSURANCE_CLIENT", joinColumns = {
+    @JoinColumn(name = "idAssurance", nullable = false, updatable = false) },
+            inverseJoinColumns = {
+                @JoinColumn(
+                    name = "idClient",
+                    nullable = false, updatable = false) 
+            })
+    private Set<Client> clientList;
+    
     public Date getSubscriptionDate() {
         return subscriptionDate;
     }
@@ -80,4 +90,13 @@ public abstract class Assurance implements Serializable, AssuranceInterface {
     public void setIdAssurance(int idAssurance) {
         this.idAssurance = idAssurance;
     }
+
+    public Set<Client> getClientList() {
+        return clientList;
+    }
+
+    public void setClientList(Set<Client> clientList) {
+        this.clientList = clientList;
+    }
+
 }
