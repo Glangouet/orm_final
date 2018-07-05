@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -17,7 +18,10 @@ public class Echeances implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private int idEcheance;
-        
+            
+    @ManyToOne
+    private Assurance assurance;
+    
     @Column
     private double price;
 
@@ -69,5 +73,14 @@ public class Echeances implements Serializable {
     public void setIssueBillDate(Date issueBillDate) {
         this.issueBillDate = issueBillDate;
     }
+
+    public Assurance getAssurance() {
+        return assurance;
+    }
+
+    public void setAssurance(Assurance assurance) {
+        this.assurance = assurance;
+    }
      
+    
 }

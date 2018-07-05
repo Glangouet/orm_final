@@ -48,8 +48,11 @@ public class ClientServiceTest {
         cp.setLastname("LANGOUET");
         clientDao.persist(cp);
         
-        List<PersonnePhysique> lp = this.clientService.birthdayFeature();
+        List<PersonnePhysique> lp = this.clientService.feature10();
         System.out.println(lp.size());
+        for (PersonnePhysique p : lp) {
+          System.out.println(p.getFirstname() + ' ' + p.getLastname());
+        }
         Assert.assertTrue(lp.size() > 0);
     }
     

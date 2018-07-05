@@ -1,6 +1,7 @@
 package net.joastbg.sampleapp.entities;
 
 
+import net.joastbg.sampleapp.interfaces.AssuranceInterface;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -21,7 +22,7 @@ import javax.persistence.Table;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name="ASSURANCE")
-public abstract class Assurance implements Serializable {
+public abstract class Assurance implements Serializable, AssuranceInterface {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -39,16 +40,6 @@ public abstract class Assurance implements Serializable {
     
     @Column
     private String typeAssurance;
-
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "ASSURANCE_ECHEANCES", joinColumns = {
-    @JoinColumn(name = "idAssurance", nullable = false, updatable = false) },
-            inverseJoinColumns = {
-                @JoinColumn(
-                    name = "idEcheance",
-                    nullable = false, updatable = false) 
-            })
-    private Set<Echeances> echeanceList;
     
     public Date getSubscriptionDate() {
         return subscriptionDate;
@@ -89,14 +80,4 @@ public abstract class Assurance implements Serializable {
     public void setIdAssurance(int idAssurance) {
         this.idAssurance = idAssurance;
     }
-
-    public Set<Echeances> getEcheanceList() {
-        return echeanceList;
-    }
-
-    public void setEcheanceList(Set<Echeances> echeanceList) {
-        this.echeanceList = echeanceList;
-    }
-    
-    
 }

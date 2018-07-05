@@ -49,4 +49,16 @@ public class ClientService {
         
         return lpb;
     }
+    
+    public List<PersonnePhysique> feature10() {
+        SimpleDateFormat formater = new SimpleDateFormat("MM");
+        Date date1 = new Date();
+        DateTime date2 = new DateTime();
+        date2.plusMonths(3);
+        String month1 = formater.format(date1);
+        String month2 = Integer.toString(date2.getMonthOfYear());
+        
+        return clientDao.feature10(month1, month2);
+        
+    }
 }
