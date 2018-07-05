@@ -73,6 +73,8 @@ public class AssuranceServiceTest {
         System.out.println("NB ASSURANCE BIRTHDAY AFTER DELETE CODE : " + countLa2);
         
         Assert.assertTrue(countLa != countLa2);
+        
+        System.out.println("FIN TEST FEATURE 9");
     }
     
 }

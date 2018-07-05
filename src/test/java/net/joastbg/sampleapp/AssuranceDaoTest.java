@@ -1,14 +1,11 @@
 package net.joastbg.sampleapp;
 
 import java.util.Date;
-import java.util.List;
-import java.util.Set;
 import junit.framework.Assert;
 import net.joastbg.sampleapp.dao.AssuranceDao;
 import net.joastbg.sampleapp.dao.ClientDao;
 import net.joastbg.sampleapp.entities.AssuranceAuto;
 import net.joastbg.sampleapp.entities.AssuranceHabitat;
-import net.joastbg.sampleapp.entities.Client;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,9 +15,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
-import net.joastbg.sampleapp.entities.PersonneMorale;
 import net.joastbg.sampleapp.entities.PersonnePhysique;
-import net.joastbg.sampleapp.entities.Sinistre;
 
 @TransactionConfiguration(transactionManager="transactionManager", defaultRollback=false)
 @Transactional
@@ -30,6 +25,9 @@ import net.joastbg.sampleapp.entities.Sinistre;
 
     @Autowired
     AssuranceDao assuranceDao;
+    
+    @Autowired
+    ClientDao clientDao;
 
     @Before
     public void setUp() {
@@ -37,7 +35,16 @@ import net.joastbg.sampleapp.entities.Sinistre;
 
     @Test
     public void testPersist(){
+        System.out.println("TEST CREATION DES ASSURANCES");
+        
+        PersonnePhysique r = new PersonnePhysique();
+        r.setBirthDate(new Date());
+        r.setFirstname("Guillaume");
+        r.setLastname("Langouet");
+        int idR = clientDao.persist(r);
+        
         AssuranceAuto aa = new AssuranceAuto();
+        aa.getClientList().add(r);
         aa.setBonnusMalus(10);
         aa.setBirthDate(new Date());
         aa.setDraftDate(new Date());
@@ -50,6 +57,7 @@ import net.joastbg.sampleapp.entities.Sinistre;
         assuranceDao.delete(aa);
         
         AssuranceHabitat ah = new AssuranceHabitat();
+        aa.getClientList().add(r);
         ah.setCoverValue(10000);
         ah.setBirthDate(new Date());
         ah.setDraftDate(new Date());
@@ -60,6 +68,8 @@ import net.joastbg.sampleapp.entities.Sinistre;
         Assert.assertTrue(idAh > 0);
         System.out.println(idAh);
         assuranceDao.delete(ah);
+        
+        System.out.println("FIN TEST CREATION DES ASSURANCES");
     }
 
 }

@@ -35,19 +35,29 @@ public class ContactDaoTest {
 
     @Test
     public void testPersist(){
+        
+        System.out.println("TEST PERSSIST A CONTACT");
+        
         int id = (int) contactDao.persist(contact);
         Assert.assertTrue(id > -1);
         contactDao.delete(contact);
+        
+        System.out.println("FIN TEST PERSSIST A CONTACT");
     }
 
     @Test
     public void testFind(){
+        
+        System.out.println("TEST FIND A CONTACT BY ID");
+        
         int id = (int) contactDao.persist(contact);
         System.out.println(id);
         Contact contactFound = contactDao.find(id);
         Assert.assertNotNull(contactFound);
         Assert.assertEquals(contact, contactFound);
         contactDao.delete(contact);
+        
+        System.out.println("FIN TEST FIND A CONTACT BY ID");
     }
 
 }

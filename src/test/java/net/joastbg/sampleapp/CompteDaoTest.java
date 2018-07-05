@@ -38,18 +38,28 @@ public class CompteDaoTest {
 
     @Test
     public void testPersist(){
+        
+        System.out.println("TEST PERSSIST COMPTE BANCAIRE");
+        
         String id = compteDao.persist(compte);
         Assert.assertTrue(id != null);
         compteDao.delete(compte);
+        
+        System.out.println("FIN TEST PERSSIST COMPTE BANCAIRE");
     }
 
     @Test
     public void testFind(){
+        
+        System.out.println("TEST FIND A COMPTE BANCAIRE BY ID");
+        
         String id = compteDao.persist(compte);
         CompteBancaire compteFound = compteDao.find(id);
         Assert.assertNotNull(compteFound);
         Assert.assertEquals(compte,compteFound);
         compteDao.delete(compte);
+        
+        System.out.println("FIN TEST FIND A COMPTE BANCAIRE BY ID");
     }
 
 }

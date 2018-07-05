@@ -42,6 +42,9 @@ public class ClientServiceTest {
 
     @Test
     public void testGetClientBirthdate() {
+        
+        System.out.println("TEST GET CLIENTS FEATURE 10");
+        
         PersonnePhysique cp = new PersonnePhysique();
         cp.setBirthDate(new Date());
         cp.setFirstname("Guillaume");
@@ -54,6 +57,8 @@ public class ClientServiceTest {
           System.out.println(p.getFirstname() + ' ' + p.getLastname());
         }
         Assert.assertTrue(lp.size() > 0);
+        
+        System.out.println("FIN TEST GET CLIENTS FEATURE 10");
     }
     
 }

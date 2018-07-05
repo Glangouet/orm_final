@@ -55,6 +55,9 @@ public class SinistreDaoTest {
 
     @Test
     public void testPersist(){
+        
+        System.out.println("TEST PERSSIST SINISTRE");
+        
         int ida = assuranceDao.persist(assuranceHabitat);
         Assurance assuranceFound = assuranceDao.find(ida);
         
@@ -66,6 +69,8 @@ public class SinistreDaoTest {
         System.out.println("idAssurance: " + s.getIdAssurance().getIdAssurance() + ", TITRE: " + s.getTitre() + ", DESCRIPRION: " + s.getDescription());
         
         sinistreDao.delete(sinistre);
+        
+        System.out.println("FIN TEST PERSSIST SINISTRE");
     }
 
 }

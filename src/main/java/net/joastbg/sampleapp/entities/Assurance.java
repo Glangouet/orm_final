@@ -3,11 +3,14 @@ package net.joastbg.sampleapp.entities;
 
 import net.joastbg.sampleapp.interfaces.AssuranceInterface;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -23,6 +26,10 @@ import javax.persistence.Table;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name="ASSURANCE")
 public abstract class Assurance implements Serializable, AssuranceInterface {
+
+    public Assurance() {
+        clientList = new HashSet<Client>();
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

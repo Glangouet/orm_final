@@ -74,6 +74,8 @@ public class EcheancesServiceTest {
         List<Echeances> le = echeancesService.feature7(aa);
         System.out.println("NOMBRE D'ECHEANCES TROUVE DANS LES 6 MOIS POUR CETTE ASSURANCE : " + idEch);
         Assert.assertTrue(le.size() > 0);
+        
+        System.out.println("FIN TEST RECUPERATION ECHEANCE 6MOIS");
     }
 
 }

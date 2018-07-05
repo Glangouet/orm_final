@@ -31,6 +31,8 @@ public class ClientDaoTest {
 
     @Test
     public void testPersist(){
+        System.out.println("TEST CREATION DES CLIENTS");
+        
         PersonneMorale p = new PersonneMorale();
         p.setSiren("000000000");
         p.setCompanyName("test");
@@ -43,6 +45,8 @@ public class ClientDaoTest {
         r.setLastname("Langouet");
         int idR = clientDao.persist(r);
         Assert.assertTrue(idR > 0);
+        
+        System.out.println("FIN TEST CREATION DES CLIENTS");
     }
 
 
